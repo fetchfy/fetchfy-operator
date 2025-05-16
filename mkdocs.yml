@@ -1,0 +1,105 @@
+site_name: Fetchfy MCP Gateway Operator
+site_description: Kubernetes Operator for MCP (Model Context Protocol) Gateway Integration
+site_url: https://fetchfy.github.io/fetchfy-operator/
+
+repo_name: fetchfy/fetchfy-operator
+repo_url: https://github.com/fetchfy/fetchfy-operator
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  language: en
+  logo: images/logo.svg
+  favicon: images/favicon.png
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.expand
+    - navigation.indexes
+    - navigation.top
+    - search.highlight
+    - search.share
+    - search.suggest
+    - content.code.annotate
+    - content.code.copy
+    - content.tabs.link
+
+plugins:
+  - search
+  - social:
+      cards_font: Roboto
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - toc:
+      permalink: true
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/fetchfy/fetchfy-operator
+
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Installation: getting-started/installation.md
+    - Quick Start: getting-started/quickstart.md
+    - Configuration: getting-started/configuration.md
+  - Core Concepts:
+    - Overview: concepts/overview.md
+    - Architecture: concepts/architecture.md
+    - MCP Integration: concepts/mcp-integration.md
+  - Guides:
+    - Creating a Gateway: guides/creating-gateway.md
+    - Deploying MCP Services: guides/deploying-services.md
+    - Monitoring: guides/monitoring.md
+    - Security: guides/security.md
+  - API Reference:
+    - Gateway CRD: api-reference/gateway-crd.md
+  - Development:
+    - Setup: development/setup.md
+    - Contributing: development/contributing.md
+    - Debugging: development/debugging.md
+  - Examples:
+    - Basic Gateway: examples/basic-gateway.md
+    - MCP Tool Integration: examples/mcp-tool.md
+    - MCP Agent Integration: examples/mcp-agent.md
+  - FAQ: faq.md
+  - Changelog: https://github.com/fetchfy/fetchfy-operator/blob/main/CHANGELOG.md
+  - FAQs: faqs.md
+  - Changelog: changelog.md
