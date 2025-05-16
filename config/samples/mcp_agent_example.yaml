@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mcp-agent-example
+  labels:
+    app: mcp-agent-example
+    mcp-enabled: "true"
+  annotations:
+    mcp.fetchfy.ai/type: "agent"
+    mcp.fetchfy.ai/endpoint: "/mcp/agents/example"
+spec:
+  ports:
+  - port: 8080
+    targetPort: 8080
+    protocol: TCP
+    name: http
+  selector:
+    app: mcp-agent-example
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mcp-agent-example
+  labels:
+    app: mcp-agent-example
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mcp-agent-example
+  template:
+    metadata:
+      labels:
+        app: mcp-agent-example
+    spec:
+      containers:
+      - name: mcp-agent
+        image: example/mcp-agent:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+          name: http

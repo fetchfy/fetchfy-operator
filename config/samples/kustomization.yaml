@@ -1,0 +1,4 @@
+## Append samples of your project ##
+resources:
+- fetchfy_v1alpha1_gateway.yaml
+# +kubebuilder:scaffold:manifestskustomizesamples

@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mcp-tool-example
+  labels:
+    app: mcp-tool-example
+    mcp-enabled: "true"
+  annotations:
+    mcp.fetchfy.ai/type: "tool"
+    mcp.fetchfy.ai/endpoint: "/mcp/tools/example"
+spec:
+  ports:
+  - port: 8080
+    targetPort: 8080
+    protocol: TCP
+    name: http
+  selector:
+    app: mcp-tool-example
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mcp-tool-example
+  labels:
+    app: mcp-tool-example
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mcp-tool-example
+  template:
+    metadata:
+      labels:
+        app: mcp-tool-example
+    spec:
+      containers:
+      - name: mcp-tool
+        image: example/mcp-tool:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+          name: http

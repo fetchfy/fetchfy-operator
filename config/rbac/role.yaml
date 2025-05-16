@@ -1,0 +1,48 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: manager-role
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - events
+  verbs:
+  - create
+  - patch
+- apiGroups:
+  - ""
+  resources:
+  - secrets
+  - services
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - fetchfy.fetchfy.ai
+  resources:
+  - gateways
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - fetchfy.fetchfy.ai
+  resources:
+  - gateways/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - fetchfy.fetchfy.ai
+  resources:
+  - gateways/status
+  verbs:
+  - get
+  - patch
+  - update

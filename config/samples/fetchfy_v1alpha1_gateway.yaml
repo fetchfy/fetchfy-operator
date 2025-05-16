@@ -1,0 +1,13 @@
+apiVersion: fetchfy.fetchfy.ai/v1alpha1
+kind: Gateway
+metadata:
+  labels:
+    app.kubernetes.io/name: fetchfy-gateway
+    app.kubernetes.io/part-of: fetchfy
+    app.kubernetes.io/managed-by: kustomize
+  name: fetchfy-gateway
+spec:
+  mcpPort: 8080
+  serviceSelector:
+    matchLabels:
+      mcp-enabled: "true"
