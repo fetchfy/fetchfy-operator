@@ -106,7 +106,7 @@ func NewServiceWatcher(
 
 // isMCPEnabledService checks if a service is MCP-enabled (internal method)
 func (sw *ServiceWatcher) isMCPEnabledService(obj client.Object) bool {
-        return IsMCPEnabledService(obj)
+	return IsMCPEnabledService(obj)
 }
 
 // SetupWithManager sets up the service watcher with the manager
