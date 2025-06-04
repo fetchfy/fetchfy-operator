@@ -104,27 +104,9 @@ func NewServiceWatcher(
 	return sw
 }
 
-// IsMCPEnabledService checks if a service is MCP-enabled
-func IsMCPEnabledService(obj client.Object) bool {
-	svc, ok := obj.(*corev1.Service)
-	if !ok {
-		return false
-	}
-
-	if svc.Labels == nil {
-		return false
-	}
-
-	if val, exists := svc.Labels[MCPEnabledLabel]; exists && val == "true" {
-		return true
-	}
-
-	return false
-}
-
 // isMCPEnabledService checks if a service is MCP-enabled (internal method)
 func (sw *ServiceWatcher) isMCPEnabledService(obj client.Object) bool {
-	return IsMCPEnabledService(obj)
+        return IsMCPEnabledService(obj)
 }
 
 // SetupWithManager sets up the service watcher with the manager
