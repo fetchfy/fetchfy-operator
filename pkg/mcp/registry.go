@@ -92,14 +92,12 @@ func (r *Registry) RegisterService(ctx context.Context, svc *corev1.Service, ser
 		Namespace: svc.Namespace,
 	}
 
-	// Check if the service has the required annotations
-	if svc.Annotations == nil {
-		return nil, fmt.Errorf("service %s/%s has no annotations", svc.Namespace, svc.Name)
-	}
-
 	// Extract endpoint from annotations or generate one
-	endpoint, ok := svc.Annotations["mcp.fetchfy.ai/endpoint"]
-	if !ok {
+	endpoint := ""
+	if svc.Annotations != nil {
+		endpoint = svc.Annotations["mcp.fetchfy.ai/endpoint"]
+	}
+	if endpoint == "" {
 		// Generate default endpoint based on service name
 		endpoint = fmt.Sprintf("/mcp/%s/%s", svc.Namespace, svc.Name)
 	}
